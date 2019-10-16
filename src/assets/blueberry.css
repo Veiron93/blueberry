@@ -1,0 +1,86 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: #f7f7f7; }
+
+#blueberry {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 8px 10px;
+  font-family: sans-serif;
+  border-bottom: 2px solid; }
+  #blueberry.active {
+    display: flex; }
+  #blueberry > div {
+    margin-right: 50px;
+    display: flex;
+    align-items: center;
+    flex-direction: column; }
+    #blueberry > div:last-child {
+      margin-right: 0; }
+    #blueberry > div > p {
+      font-size: 14px;
+      letter-spacing: .5px;
+      margin: 0;
+      margin-bottom: 5px;
+      font-weight: bold;
+      text-transform: uppercase; }
+    #blueberry > div ul {
+      margin: 0;
+      padding: 0;
+      list-style-type: none; }
+      #blueberry > div ul li {
+        display: inline-block;
+        border: 2px solid;
+        margin-right: 2px;
+        padding: 8px;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+        cursor: pointer; }
+        #blueberry > div ul li img {
+          width: 14px;
+          display: block; }
+        #blueberry > div ul li:last-child {
+          margin-right: 0; }
+  #blueberry .logoBlueberry {
+    margin-right: 50px;
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    #blueberry .logoBlueberry a img {
+      display: block;
+      height: 40px; }
+  #blueberry .imgBlueberry ul li {
+    width: 28px;
+    text-align: center; }
+  #blueberry .themeBlueberry ul li {
+    width: 28px;
+    text-align: center; }
+  #blueberry .blueberry-btn {
+    margin-left: 30px;
+    padding: 5px;
+    border: 2px dashed;
+    width: 76px;
+    text-align: center;
+    cursor: pointer; }
+    #blueberry .blueberry-btn p {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.3em;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: bold; }
+
+.disabledImg-blueberry img {
+  display: none; }
+
+.disabledImg-blueberry div {
+  background-image: none !important; }
+
+.grayImg-blueberry img {
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%); }
