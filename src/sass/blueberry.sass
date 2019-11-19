@@ -8,10 +8,10 @@ body
 
 #blueberry
 	display: none
-	align-items: center
+	//align-items: center
 	justify-content: center
 	flex-wrap: wrap
-	padding: 8px 10px
+	//padding: 8px 10px
 	//background: #e8e8e8
 	font-family: sans-serif
 	border-bottom: 2px solid
@@ -21,7 +21,7 @@ body
 		display: flex
 
 	> div
-		margin-right: 50px
+		margin-right: 40px
 		display: flex
 		align-items: center
 		flex-direction: column
@@ -29,79 +29,139 @@ body
 		&:last-child
 			margin-right: 0
 
-		> p
+		> p.titleTools
+			display: block
+
+			min-width: 80px
+
+			margin:
+				top: 0
+				bottom: 5px
+
+			padding: 5px 10px
+
+			border-radius: 0 0 6px 6px
+			background: #000
+
 			font-size: 14px
-			letter-spacing: .5px
-			margin: 0
-			margin-bottom: 5px
-			font-weight: bold
 			text-transform: uppercase
+			letter-spacing: 1px
+			text-align: center
+			color: #fff
+			
+
 
 		ul
-			margin: 0
+			margin: 
+				top: 5px
+				bottom: 0
+
 			padding: 0
+
 			list-style-type: none
 			
+			display: flex
+			justify-content: center
+			
 			li
-				display: inline-block
-				border: 2px solid
-				margin-right: 2px
-				padding: 8px
-				font-size: 13px
-				text-transform: uppercase
-				letter-spacing: 0.4px
-				//font-weight: bold
+				display: flex
+				align-items: center
+				justify-content: center
+				flex: none
+
+				width: 40px
+				height: 26px
+
+				margin-right: 8px
+
+				border-radius: 6px 6px 0 0
+				border: 2px solid #000
+				border-bottom: none
+				
 				cursor: pointer
+				font-size: 14px
+				font-weight: bold
+				
+				
 
 				img
 					width: 14px
 					display: block
 
+
 				&:last-child
 					margin-right: 0
 
+
+
 	.logoBlueberry
-		//border: 1px solid
 		margin-right: 50px
 		flex: none
 		display: flex
 		align-items: center
 		justify-content: center
+
 		a
 
 			img
 				display: block
 				height: 40px
 
+	
 	.imgBlueberry
 		ul
+
 			li
-				width: 28px
-				text-align: center
+				
 
 
 	.themeBlueberry
 		ul
 			li
-				width: 28px
+			
 				text-align: center
 
 
-	.blueberry-btn
-		margin-left: 30px
-		padding: 5px
-		border: 2px dashed
-		width: 76px
-		text-align: center
+	.resetSettingsBlueberry
+		flex-direction: row
+		justify-content: center
+		height: 40px
+		width: 100px	
+		margin: 
+			right: 0
+			left: 50px
+
 		cursor: pointer
+		border: 2px solid #000
+		border-right: none
 
 		p
 			margin: 0
-			font-size: 13px
+			font-size: 12px
 			line-height: 1.3em
-			letter-spacing: 1px
+			letter-spacing: 1.3px
 			text-transform: uppercase
 			font-weight: bold
+			text-align: center
+
+
+
+	.blueberry-btn
+		flex-direction: row
+		justify-content: center
+		height: 40px
+		width: 100px
+		cursor: pointer
+		border: 2px solid #000
+
+		p
+			margin: 0
+			font-size: 12px
+			line-height: 1.3em
+			letter-spacing: 1.3px
+			text-transform: uppercase
+			font-weight: bold
+			text-align: center
 
 
 .active-active

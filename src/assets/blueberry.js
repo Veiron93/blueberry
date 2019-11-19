@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		</div>`;
   let sizeTextBlueberry = `
 		<div>
-			<p>Размер</p>
+			<p class="titleTools">Размер</p>
 			<ul>
 				<li id="larger_text-${nameModule}" title="Увеличить текст">
 					<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgNDkxLjg2IDQ5MS44NiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNDkxLjg2IDQ5MS44NjsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIj48Zz48Zz4KCTxnPgoJCTxwYXRoIGQ9Ik00NjUuMTY3LDIxMS42MTRIMjgwLjI0NVYyNi42OTFjMC04LjQyNC0xMS40MzktMjYuNjktMzQuMzE2LTI2LjY5cy0zNC4zMTYsMTguMjY3LTM0LjMxNiwyNi42OXYxODQuOTI0SDI2LjY5ICAgIEMxOC4yNjcsMjExLjYxNCwwLDIyMy4wNTMsMCwyNDUuOTI5czE4LjI2NywzNC4zMTYsMjYuNjksMzQuMzE2aDE4NC45MjR2MTg0LjkyNGMwLDguNDIyLDExLjQzOCwyNi42OSwzNC4zMTYsMjYuNjkgICAgczM0LjMxNi0xOC4yNjgsMzQuMzE2LTI2LjY5VjI4MC4yNDVINDY1LjE3YzguNDIyLDAsMjYuNjktMTEuNDM4LDI2LjY5LTM0LjMxNlM0NzMuNTksMjExLjYxNCw0NjUuMTY3LDIxMS42MTR6IiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBjbGFzcz0iYWN0aXZlLXBhdGgiIHN0eWxlPSJmaWxsOiMwMDAwMDAiPjwvcGF0aD4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KPC9nPjwvZz4gPC9zdmc+" />
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		</div>`;
   let letterSpaceTextBlueberry = `
 		<div>
-			<p>Интервал</p>
+			<p class="titleTools">Интервал</p>
 			<ul>
 				<li id="larger_interval-${nameModule}" title="Увеличить интервал">
 					<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgNDkxLjg2IDQ5MS44NiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNDkxLjg2IDQ5MS44NjsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIj48Zz48Zz4KCTxnPgoJCTxwYXRoIGQ9Ik00NjUuMTY3LDIxMS42MTRIMjgwLjI0NVYyNi42OTFjMC04LjQyNC0xMS40MzktMjYuNjktMzQuMzE2LTI2LjY5cy0zNC4zMTYsMTguMjY3LTM0LjMxNiwyNi42OXYxODQuOTI0SDI2LjY5ICAgIEMxOC4yNjcsMjExLjYxNCwwLDIyMy4wNTMsMCwyNDUuOTI5czE4LjI2NywzNC4zMTYsMjYuNjksMzQuMzE2aDE4NC45MjR2MTg0LjkyNGMwLDguNDIyLDExLjQzOCwyNi42OSwzNC4zMTYsMjYuNjkgICAgczM0LjMxNi0xOC4yNjgsMzQuMzE2LTI2LjY5VjI4MC4yNDVINDY1LjE3YzguNDIyLDAsMjYuNjktMTEuNDM4LDI2LjY5LTM0LjMxNlM0NzMuNTksMjExLjYxNCw0NjUuMTY3LDIxMS42MTR6IiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBjbGFzcz0iYWN0aXZlLXBhdGgiIHN0eWxlPSJmaWxsOiMwMDAwMDAiPjwvcGF0aD4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KPC9nPjwvZz4gPC9zdmc+" />
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		</div>`;
   let imagesBlueberry = `
 		<div class="imgBlueberry">
-			<p>Изображения</p>
+			<p class="titleTools">Изображения</p>
 			<ul>
 				<li id="img-${nameModule}" title="Выключить изображения">Вык</li>
 				<li id="gray_img-${nameModule}" title="Чёрно-белые изображения">Ч/Б</li>
@@ -39,14 +39,14 @@ document.addEventListener('DOMContentLoaded', function () {
 		</div>`;
   let themeBlueberry = `
 		<div class="themeBlueberry">
-			<p>цветовая Схема</p>
+			<p class="titleTools">цветовая Схема</p>
 			<ul>
 				<li id="white_theme-${nameModule}" class="btn_theme-blueberry" title="Белое на чёрном">Б/Ч</li>
 				<li id="black_theme-${nameModule}" class="btn_theme-blueberry" title="Чёрное на белом">Ч/Б</li>
 				<li id="blue_theme-${nameModule}" class="btn_theme-blueberry" title="Чёрное на белом">С/Ж</li>
 			</ul>
 		</div>`;
-  let resetSettingsBlueberry = `
+  let btnResetSettingsBlueberry = `
 		<div class="resetSettingsBlueberry" title="Сохранить настройки">
 			<p>Сбросить настройки</p>
 		</div>`;
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   let blueberry = document.createElement('div');
   blueberry.id = nameModule;
-  blueberry.innerHTML = [logoBlueberry, sizeTextBlueberry, letterSpaceTextBlueberry, imagesBlueberry, themeBlueberry, resetSettingsBlueberry, btnOffBlueberry].join('');
+  blueberry.innerHTML = [logoBlueberry, sizeTextBlueberry, letterSpaceTextBlueberry, imagesBlueberry, themeBlueberry, btnResetSettingsBlueberry, btnOffBlueberry].join('');
   document.body.prepend(blueberry); ///////////////////////// ФУНКЦИИ ДЛЯ РАБОТЫ С COOKIE /////////////////////////
   // получение cookie
 
@@ -151,9 +151,33 @@ document.addEventListener('DOMContentLoaded', function () {
 
   for (var i = 0; i < btnBlueberryStatus.length; i++) {
     btnBlueberryStatus[i].addEventListener('click', () => moduleStatusBlueberry('click'));
-  } ///////////////////////// ИЗОБРАЖЕНИЯ /////////////////////////
-  // включение отключение изображений
+  } ///////////////////////// СБРОСИТЬ НАСТРОЙКИ /////////////////////////
 
+
+  function resetSettingsBlueberry() {
+    // удаление cookies
+    let cookies = document.cookie.split(';');
+    cookies.forEach(function (e) {
+      let cookieArr = e.split(/-|=/);
+
+      if (cookieArr[0].trim() != "moduleStatus" && cookieArr[cookieArr.length - 2] == nameModule) {
+        let nameCookie = cookieArr.splice(0, 2).join('-');
+        deleteCookie(nameCookie);
+      }
+    }); // удаление классов с body
+
+    let classesBody = document.body.className.split(' ');
+    classesBody.forEach(function (e) {
+      let arrClass = e.split('-');
+
+      if (arrClass[0] != "active" && arrClass[1] == nameModule) {
+        document.body.classList.remove(e);
+      }
+    });
+  }
+
+  document.querySelector('.resetSettingsBlueberry').addEventListener('click', () => resetSettingsBlueberry()); ///////////////////////// ИЗОБРАЖЕНИЯ /////////////////////////
+  // включение отключение изображений
 
   function imgOnOffBlueberry(typeEvent) {
     let imgCookie = getCookie("img-" + nameModule);

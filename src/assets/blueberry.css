@@ -5,41 +5,53 @@ body {
 
 #blueberry {
   display: none;
-  align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  padding: 8px 10px;
   font-family: sans-serif;
   border-bottom: 2px solid; }
   #blueberry.active {
     display: flex; }
   #blueberry > div {
-    margin-right: 50px;
+    margin-right: 40px;
     display: flex;
     align-items: center;
     flex-direction: column; }
     #blueberry > div:last-child {
       margin-right: 0; }
-    #blueberry > div > p {
-      font-size: 14px;
-      letter-spacing: .5px;
-      margin: 0;
+    #blueberry > div > p.titleTools {
+      display: block;
+      min-width: 80px;
+      margin-top: 0;
       margin-bottom: 5px;
-      font-weight: bold;
-      text-transform: uppercase; }
+      padding: 5px 10px;
+      border-radius: 0 0 6px 6px;
+      background: #000;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-align: center;
+      color: #fff; }
     #blueberry > div ul {
-      margin: 0;
+      margin-top: 5px;
+      margin-bottom: 0;
       padding: 0;
-      list-style-type: none; }
+      list-style-type: none;
+      display: flex;
+      justify-content: center; }
       #blueberry > div ul li {
-        display: inline-block;
-        border: 2px solid;
-        margin-right: 2px;
-        padding: 8px;
-        font-size: 13px;
-        text-transform: uppercase;
-        letter-spacing: 0.4px;
-        cursor: pointer; }
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: none;
+        width: 40px;
+        height: 26px;
+        margin-right: 8px;
+        border-radius: 6px 6px 0 0;
+        border: 2px solid #000;
+        border-bottom: none;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: bold; }
         #blueberry > div ul li img {
           width: 14px;
           display: block; }
@@ -54,26 +66,41 @@ body {
     #blueberry .logoBlueberry a img {
       display: block;
       height: 40px; }
-  #blueberry .imgBlueberry ul li {
-    width: 28px;
-    text-align: center; }
   #blueberry .themeBlueberry ul li {
-    width: 28px;
     text-align: center; }
+  #blueberry .resetSettingsBlueberry {
+    flex-direction: row;
+    justify-content: center;
+    height: 40px;
+    width: 100px;
+    margin-right: 0;
+    margin-left: 50px;
+    cursor: pointer;
+    border: 2px solid #000;
+    border-right: none; }
+    #blueberry .resetSettingsBlueberry p {
+      margin: 0;
+      font-size: 12px;
+      line-height: 1.3em;
+      letter-spacing: 1.3px;
+      text-transform: uppercase;
+      font-weight: bold;
+      text-align: center; }
   #blueberry .blueberry-btn {
-    margin-left: 30px;
-    padding: 5px;
-    border: 2px dashed;
-    width: 76px;
-    text-align: center;
-    cursor: pointer; }
+    flex-direction: row;
+    justify-content: center;
+    height: 40px;
+    width: 100px;
+    cursor: pointer;
+    border: 2px solid #000; }
     #blueberry .blueberry-btn p {
       margin: 0;
-      font-size: 13px;
+      font-size: 12px;
       line-height: 1.3em;
-      letter-spacing: 1px;
+      letter-spacing: 1.3px;
       text-transform: uppercase;
-      font-weight: bold; }
+      font-weight: bold;
+      text-align: center; }
 
 .disabledImg-blueberry img {
   display: none; }
