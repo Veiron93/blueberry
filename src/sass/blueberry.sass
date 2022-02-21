@@ -4,180 +4,170 @@ body
 	background: #f7f7f7
 
 
+// BLUEBERRY
 
+$brs: 6px
 
-#blueberry
+.blueberry
 	display: none
-	//align-items: center
+	align-items: center
 	justify-content: center
 	flex-wrap: wrap
-	//padding: 8px 10px
-	//background: #e8e8e8
+	column-gap: 30px
+
 	font-family: sans-serif
 	border-bottom: 2px solid
-	
+	padding: 0 10px
 
+	*
+		box-sizing: border-box
+	
 	&.active
 		display: flex
 
-	> div
-		margin-right: 40px
+	&-module
 		display: flex
 		align-items: center
 		flex-direction: column
+
+		&_title
+			width: 100%
+			padding: 8px 10px
+			margin-bottom: 10px
+
+			border-radius: 0 0 $brs $brs
+			user-select: none
 		
-		&:last-child
-			margin-right: 0
-
-		> p.titleTools
-			display: block
-
-			min-width: 80px
-
-			margin:
-				top: 0
-				bottom: 5px
-
-			padding: 5px 10px
-
-			border-radius: 0 0 6px 6px
-			background: #000
-
 			font-size: 14px
 			text-transform: uppercase
 			letter-spacing: 1px
 			text-align: center
 			color: #fff
-			
+			background: #000
 
 
-		ul
-			margin: 
-				top: 5px
-				bottom: 0
-
-			padding: 0
-
-			list-style-type: none
-			
+		&_list
 			display: flex
-			justify-content: center
-			
-			li
+			column-gap: 8px
+
+			> div
 				display: flex
 				align-items: center
 				justify-content: center
 				flex: none
 
-				width: 40px
-				height: 26px
+				width: 46px
+				height: 30px
 
-				margin-right: 8px
-
-				border-radius: 6px 6px 0 0
 				border: 2px solid #000
 				border-bottom: none
-				
 				cursor: pointer
-				font-size: 14px
+				user-select: none
+
+				border-radius: $brs $brs 0 0
+				transition: background .2s, color .2s
 				font-weight: bold
+
+				&:hover
+					background: #000
+					color: #fff
+
+					svg
+						fill: #fff
+
+				svg
+					width: 16px
+					transition: fill .2s
+
+		&_btn
+			height: 40px
+			width: 100px
+			text-align: center
+			border: 2px solid
+			border-radius: $brs
+			font-size: 14px
+			display: flex
+			align-items: center
+			justify-content: center
+			font-weight: bold
+
+			user-select: none
+			transition: background .2s, color .2s, border-color .2s
+			cursor: pointer
+
+			&:hover	
+				background: #000
+				border-color: #000
+				color: #fff
+
+							
 				
-				
-
-				img
-					width: 14px
-					display: block
-
-
-				&:last-child
-					margin-right: 0
-
-
-
-	.logoBlueberry
-		margin-right: 50px
-		flex: none
-		display: flex
-		align-items: center
-		justify-content: center
-
+	// модуль логотип
+	&-logo
+		margin-right: 20px
 		a
-
 			img
 				display: block
-				height: 40px
-
-	
-	.imgBlueberry
-		ul
-
-			li
-				
-
-
-	.themeBlueberry
-		ul
-			li
-			
-				text-align: center
-
-
-	.resetSettingsBlueberry
-		flex-direction: row
-		justify-content: center
-		height: 40px
-		width: 100px	
-		margin: 
-			right: 0
-			left: 50px
-
-		cursor: pointer
-		border: 2px solid #000
-		border-right: none
-
-		p
-			margin: 0
-			font-size: 12px
-			line-height: 1.3em
-			letter-spacing: 1.3px
-			text-transform: uppercase
-			font-weight: bold
-			text-align: center
+				height: 30px
 
 
 
-	.blueberry-btn
-		flex-direction: row
-		justify-content: center
-		height: 40px
-		width: 100px
-		cursor: pointer
-		border: 2px solid #000
 
-		p
-			margin: 0
-			font-size: 12px
-			line-height: 1.3em
-			letter-spacing: 1.3px
-			text-transform: uppercase
-			font-weight: bold
-			text-align: center
+///////////////////////////// КЛАССЫ МОДУЛЕЙ /////////////////////////////
 
 
-.active-active
+////////////////////// ИЗОБРАЖЕНИЯ //////////////////////
 
-
-.disabledImg-blueberry
+// отключить изображения
+.img-off__blueberry
 	img
-		display: none
+		&:not(.skip-blueberry)
+			opacity: 0
 
 	div
 		background-image: none !important
 
 
-.grayImg-blueberry
+// чёрно-белые изображения
+.img-gray__blueberry
 	img
 		filter: grayscale(100%)
+
+
+////////////////////// ТЕМЫ //////////////////////
+
+// белая тема
+$bgThemeWhite: #fff
+$colorThemeWhite: #000
+
+.theme-white__blueberry
+	background: #fff
+
+// чёрная тема
+$bgThemeBlack: #000
+$colorThemeBlack: #fff
+$colorHoverThemeBlack: yellow
+
+.theme-black__blueberry
+	background: $bgThemeBlack
+	color: $colorThemeBlack
+
+	*
+		color: $colorThemeBlack
+
+	a
+		text-decoration: none
+		border-bottom: 1px dashed $colorThemeBlack
+		&:hover
+			color: $colorHoverThemeBlack
+
+// синяя тема
+$bgThemeBlue: blue
+$colorThemeBlue: yellow
+
+.theme-blue__blueberry
+	background: blue
+
 
 
 

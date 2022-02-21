@@ -4,7 +4,7 @@ var browserSync = require('browser-sync').create();
 
 var gulp = require('gulp'),
 	babel = require("gulp-babel"),
-	sass = require('gulp-sass'),
+	sass = require('gulp-sass')(require('sass')),
 	autoprefixer = require('gulp-autoprefixer'),
 	rename  = require('gulp-rename'),
 	concat = require('gulp-concat'),

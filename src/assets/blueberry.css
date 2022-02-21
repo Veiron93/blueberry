@@ -1,113 +1,143 @@
 body {
   margin: 0;
   padding: 0;
-  background: #f7f7f7; }
+  background: #f7f7f7;
+}
 
-#blueberry {
+.blueberry {
   display: none;
+  align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+  -moz-column-gap: 30px;
+       column-gap: 30px;
   font-family: sans-serif;
-  border-bottom: 2px solid; }
-  #blueberry.active {
-    display: flex; }
-  #blueberry > div {
-    margin-right: 40px;
-    display: flex;
-    align-items: center;
-    flex-direction: column; }
-    #blueberry > div:last-child {
-      margin-right: 0; }
-    #blueberry > div > p.titleTools {
-      display: block;
-      min-width: 80px;
-      margin-top: 0;
-      margin-bottom: 5px;
-      padding: 5px 10px;
-      border-radius: 0 0 6px 6px;
-      background: #000;
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      text-align: center;
-      color: #fff; }
-    #blueberry > div ul {
-      margin-top: 5px;
-      margin-bottom: 0;
-      padding: 0;
-      list-style-type: none;
-      display: flex;
-      justify-content: center; }
-      #blueberry > div ul li {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex: none;
-        width: 40px;
-        height: 26px;
-        margin-right: 8px;
-        border-radius: 6px 6px 0 0;
-        border: 2px solid #000;
-        border-bottom: none;
-        cursor: pointer;
-        font-size: 14px;
-        font-weight: bold; }
-        #blueberry > div ul li img {
-          width: 14px;
-          display: block; }
-        #blueberry > div ul li:last-child {
-          margin-right: 0; }
-  #blueberry .logoBlueberry {
-    margin-right: 50px;
-    flex: none;
-    display: flex;
-    align-items: center;
-    justify-content: center; }
-    #blueberry .logoBlueberry a img {
-      display: block;
-      height: 40px; }
-  #blueberry .themeBlueberry ul li {
-    text-align: center; }
-  #blueberry .resetSettingsBlueberry {
-    flex-direction: row;
-    justify-content: center;
-    height: 40px;
-    width: 100px;
-    margin-right: 0;
-    margin-left: 50px;
-    cursor: pointer;
-    border: 2px solid #000;
-    border-right: none; }
-    #blueberry .resetSettingsBlueberry p {
-      margin: 0;
-      font-size: 12px;
-      line-height: 1.3em;
-      letter-spacing: 1.3px;
-      text-transform: uppercase;
-      font-weight: bold;
-      text-align: center; }
-  #blueberry .blueberry-btn {
-    flex-direction: row;
-    justify-content: center;
-    height: 40px;
-    width: 100px;
-    cursor: pointer;
-    border: 2px solid #000; }
-    #blueberry .blueberry-btn p {
-      margin: 0;
-      font-size: 12px;
-      line-height: 1.3em;
-      letter-spacing: 1.3px;
-      text-transform: uppercase;
-      font-weight: bold;
-      text-align: center; }
+  border-bottom: 2px solid;
+  padding: 0 10px;
+}
+.blueberry * {
+  box-sizing: border-box;
+}
+.blueberry.active {
+  display: flex;
+}
+.blueberry-module {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.blueberry-module_title {
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 10px;
+  border-radius: 0 0 6px 6px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+  color: #fff;
+  background: #000;
+}
+.blueberry-module_list {
+  display: flex;
+  -moz-column-gap: 8px;
+       column-gap: 8px;
+}
+.blueberry-module_list > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 46px;
+  height: 30px;
+  border: 2px solid #000;
+  border-bottom: none;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  border-radius: 6px 6px 0 0;
+  transition: background 0.2s, color 0.2s;
+  font-weight: bold;
+}
+.blueberry-module_list > div:hover {
+  background: #000;
+  color: #fff;
+}
+.blueberry-module_list > div:hover svg {
+  fill: #fff;
+}
+.blueberry-module_list > div svg {
+  width: 16px;
+  transition: fill 0.2s;
+}
+.blueberry-module_btn {
+  height: 40px;
+  width: 100px;
+  text-align: center;
+  border: 2px solid;
+  border-radius: 6px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  cursor: pointer;
+}
+.blueberry-module_btn:hover {
+  background: #000;
+  border-color: #000;
+  color: #fff;
+}
+.blueberry-logo {
+  margin-right: 20px;
+}
+.blueberry-logo a img {
+  display: block;
+  height: 30px;
+}
 
-.disabledImg-blueberry img {
-  display: none; }
+.img-off__blueberry img:not(.skip-blueberry) {
+  opacity: 0;
+}
+.img-off__blueberry div {
+  background-image: none !important;
+}
 
-.disabledImg-blueberry div {
-  background-image: none !important; }
-
-.grayImg-blueberry img {
+.img-gray__blueberry img {
   -webkit-filter: grayscale(100%);
-          filter: grayscale(100%); }
+          filter: grayscale(100%);
+}
+
+.theme-white__blueberry {
+  background: #fff;
+}
+
+.theme-black__blueberry {
+  background: #000;
+  color: #fff;
+}
+.theme-black__blueberry * {
+  color: #fff;
+}
+.theme-black__blueberry a {
+  text-decoration: none;
+  border-bottom: 1px dashed #fff;
+}
+.theme-black__blueberry a:hover {
+  color: yellow;
+}
+
+.theme-blue__blueberry {
+  background: blue;
+}

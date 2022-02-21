@@ -1,80 +1,113 @@
 document.addEventListener('DOMContentLoaded', function(){
 
-	let nameModule = "blueberry";
+	let widgetName = "blueberry";
 
 ///////////////////////// КОМПОНЕНТЫ ПАНЕЛИ /////////////////////////
 
-	let logoBlueberry = `
-		<div class="logoBlueberry">
-			<a href="" target="_blank"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGlkPSJDYXBhXzEiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDU1Mi40NyA1NTIuNDciIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTUyLjQ3IDU1Mi40NyIgd2lkdGg9IjUxMiIgY2xhc3M9IiI+PGc+PHBhdGggZD0ibTQ3NC45OTMgMjk5Ljk1My0xLjY5LTEzLjYwMi0xMy42MDItMS42OTQtMTAuODE4LTguNDIyLTEwLjgxMSA4LjQxOS0xMy42MDIgMS42OS0xLjY5NCAxMy42MDItOC40MjIgMTAuODE4IDguNDE5IDEwLjgxMiAxLjY5IDEzLjYgMTMuNjAyIDEuNjk3IDEwLjgxOCA4LjQyMiAxMC44MTItOC40MTkgMTMuNjAyLTEuNjkgMS42OTQtMTMuNjA0IDguNDIyLTEwLjgxNnoiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgc3R5bGU9ImZpbGw6IzAwMDAwMCI+PC9wYXRoPjxwYXRoIGQ9Im0xOTcuMDY3IDI1MS44MjItMTMuNjAyLTEuNjk0LTEwLjgxOC04LjQyMi0xMC44MTEgOC40MTktMTMuNjAyIDEuNjktMS42OTQgMTMuNjAyLTguNDIyIDEwLjgxOCA4LjQxOSAxMC44MTEgMS42OSAxMy42IDEzLjYwMiAxLjY5NyAxMC44MTggOC40MjIgMTAuODEyLTguNDE5IDEzLjYwMi0xLjY5IDEuNjk0LTEzLjYwNCA4LjQyMi0xMC44MTYtOC40MTktMTAuODExeiIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBzdHlsZT0iZmlsbDojMDAwMDAwIj48L3BhdGg+PHBhdGggZD0ibTQwOC44NDYgMTQxLjA1MWMyNy44MTUtMzYuMDIzIDM3LjA1Mi03MC44MjcgMzkuNzY2LTg2LjI1Ni44OTQtNS4wMjQtLjQ4OS0xMC4xODMtMy43Ni0xNC4wOTUtMy4yODgtMy45MTItOC4xMjctNi4xNzEtMTMuMjM1LTYuMTcxLTg4LjUwNyAwLTE0Mi4yNDYgNDAuMzMxLTE2My42NDggMTIyLjY5My0yNi4xNDEtODEuMjMtODYuOTE5LTEyMi42OTMtMTgxLjY0Ni0xMjIuNjkzLTUuMjI3IDAtMTAuMTY3IDIuMzYtMTMuNDM3IDYuNDI0LTMuMjcxIDQuMDYzLTQuNTM1IDkuMzkxLTMuNDM5IDE0LjQ4MyAxMS4xMzQgNTEuNDk3IDQyLjM3OCA5MC44OTUgOTIuNDM3IDExOC4yOTktOTAuMSA1LjY3Ny0xNjEuODg0IDgwLjA1My0xNjEuODg0IDE3MS41NTkgMCA5NS4xOTIgNzcuNDU1IDE3Mi42NDcgMTcyLjY0NyAxNzIuNjQ3IDQ5LjgzNiAwIDk0LjQ0OC0yMS41NDkgMTI1Ljk5MS01NS40MzggMjUuMDU2IDEzLjQ1NCA1Mi43MTMgMjAuOTA5IDgxLjE4NiAyMC45MDkgOTUuMTkyIDAgMTcyLjY0Ny03Ny40NTUgMTcyLjY0Ny0xNzIuNjQ3LS4wMDEtODUuMjUzLTYyLjI3MS0xNTUuODEyLTE0My42MjUtMTY5LjcxNHptLjEyOC03MC44OTZjLTguNTg2IDI0LjcxNy0yNC40MDUgNDkuMDU3LTQ0LjQxOCA2OC44NC0yMS4wMjUgMS44ODItNDEuMzA5IDcuNDMzLTU5Ljk1NCAxNi42MjQgMTYuNjYyLTUyLjMxMSA0OS45MzEtNzkuODYzIDEwNC4zNzItODUuNDY0em0tMjk5LjIzMi0uMTAxYzY1LjM2NyA1Ljc2NiAxMDUuOTE1IDM2Ljg5IDEyNS4zMjEgOTYuMzIxLTY2LjA3NS0xOC41MjktMTA3LjM4Mi01MC4yNi0xMjUuMzIxLTk2LjMyMXptNjIuOTA1IDQxMy4zNThjLTc2LjE1NyAwLTEzOC4xMTgtNjEuOTYxLTEzOC4xMTgtMTM4LjExOHM2MS45NjEtMTM4LjExNyAxMzguMTE4LTEzOC4xMTcgMTM4LjExOCA2MS45NjEgMTM4LjExOCAxMzguMTE4LTYxLjk2MSAxMzguMTE3LTEzOC4xMTggMTM4LjExN3ptMjA3LjE3Ni0zNC41MjljLTIwLjk3NCAwLTQxLjQ2My00Ljk0LTYwLjI0Ny0xNC4xMzcgMTUuOTk2LTI2LjE3MyAyNS43MTgtNTYuNTk3IDI1LjcxOC04OS40NTEgMC01Mi44NDQtMjQuMzgtOTkuNjMyLTYxLjkwMi0xMzEuMzI3IDI1Ljg4Mi0yNS45OTggNTkuODU3LTQxLjMyIDk2LjQzMS00MS4zMiA3Ni4xNTcgMCAxMzguMTE4IDYxLjk2MSAxMzguMTE4IDEzOC4xMThzLTYxLjk2MSAxMzguMTE2LTEzOC4xMTggMTM4LjExN3oiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgc3R5bGU9ImZpbGw6IzAwMDAwMCI+PC9wYXRoPjwvZz4gPC9zdmc+" /></a>
+	// логотип
+	let logoModule = `
+		<div class="${widgetName}-logo ${widgetName}-module">
+			<a href="https://github.com/Veiron93/blueberry" target="_blank"> 
+				<img class="skip-blueberry" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGlkPSJDYXBhXzEiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDU1Mi40NyA1NTIuNDciIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTUyLjQ3IDU1Mi40NyIgd2lkdGg9IjUxMiIgY2xhc3M9IiI+PGc+PHBhdGggZD0ibTQ3NC45OTMgMjk5Ljk1My0xLjY5LTEzLjYwMi0xMy42MDItMS42OTQtMTAuODE4LTguNDIyLTEwLjgxMSA4LjQxOS0xMy42MDIgMS42OS0xLjY5NCAxMy42MDItOC40MjIgMTAuODE4IDguNDE5IDEwLjgxMiAxLjY5IDEzLjYgMTMuNjAyIDEuNjk3IDEwLjgxOCA4LjQyMiAxMC44MTItOC40MTkgMTMuNjAyLTEuNjkgMS42OTQtMTMuNjA0IDguNDIyLTEwLjgxNnoiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgc3R5bGU9ImZpbGw6IzAwMDAwMCI+PC9wYXRoPjxwYXRoIGQ9Im0xOTcuMDY3IDI1MS44MjItMTMuNjAyLTEuNjk0LTEwLjgxOC04LjQyMi0xMC44MTEgOC40MTktMTMuNjAyIDEuNjktMS42OTQgMTMuNjAyLTguNDIyIDEwLjgxOCA4LjQxOSAxMC44MTEgMS42OSAxMy42IDEzLjYwMiAxLjY5NyAxMC44MTggOC40MjIgMTAuODEyLTguNDE5IDEzLjYwMi0xLjY5IDEuNjk0LTEzLjYwNCA4LjQyMi0xMC44MTYtOC40MTktMTAuODExeiIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBzdHlsZT0iZmlsbDojMDAwMDAwIj48L3BhdGg+PHBhdGggZD0ibTQwOC44NDYgMTQxLjA1MWMyNy44MTUtMzYuMDIzIDM3LjA1Mi03MC44MjcgMzkuNzY2LTg2LjI1Ni44OTQtNS4wMjQtLjQ4OS0xMC4xODMtMy43Ni0xNC4wOTUtMy4yODgtMy45MTItOC4xMjctNi4xNzEtMTMuMjM1LTYuMTcxLTg4LjUwNyAwLTE0Mi4yNDYgNDAuMzMxLTE2My42NDggMTIyLjY5My0yNi4xNDEtODEuMjMtODYuOTE5LTEyMi42OTMtMTgxLjY0Ni0xMjIuNjkzLTUuMjI3IDAtMTAuMTY3IDIuMzYtMTMuNDM3IDYuNDI0LTMuMjcxIDQuMDYzLTQuNTM1IDkuMzkxLTMuNDM5IDE0LjQ4MyAxMS4xMzQgNTEuNDk3IDQyLjM3OCA5MC44OTUgOTIuNDM3IDExOC4yOTktOTAuMSA1LjY3Ny0xNjEuODg0IDgwLjA1My0xNjEuODg0IDE3MS41NTkgMCA5NS4xOTIgNzcuNDU1IDE3Mi42NDcgMTcyLjY0NyAxNzIuNjQ3IDQ5LjgzNiAwIDk0LjQ0OC0yMS41NDkgMTI1Ljk5MS01NS40MzggMjUuMDU2IDEzLjQ1NCA1Mi43MTMgMjAuOTA5IDgxLjE4NiAyMC45MDkgOTUuMTkyIDAgMTcyLjY0Ny03Ny40NTUgMTcyLjY0Ny0xNzIuNjQ3LS4wMDEtODUuMjUzLTYyLjI3MS0xNTUuODEyLTE0My42MjUtMTY5LjcxNHptLjEyOC03MC44OTZjLTguNTg2IDI0LjcxNy0yNC40MDUgNDkuMDU3LTQ0LjQxOCA2OC44NC0yMS4wMjUgMS44ODItNDEuMzA5IDcuNDMzLTU5Ljk1NCAxNi42MjQgMTYuNjYyLTUyLjMxMSA0OS45MzEtNzkuODYzIDEwNC4zNzItODUuNDY0em0tMjk5LjIzMi0uMTAxYzY1LjM2NyA1Ljc2NiAxMDUuOTE1IDM2Ljg5IDEyNS4zMjEgOTYuMzIxLTY2LjA3NS0xOC41MjktMTA3LjM4Mi01MC4yNi0xMjUuMzIxLTk2LjMyMXptNjIuOTA1IDQxMy4zNThjLTc2LjE1NyAwLTEzOC4xMTgtNjEuOTYxLTEzOC4xMTgtMTM4LjExOHM2MS45NjEtMTM4LjExNyAxMzguMTE4LTEzOC4xMTcgMTM4LjExOCA2MS45NjEgMTM4LjExOCAxMzguMTE4LTYxLjk2MSAxMzguMTE3LTEzOC4xMTggMTM4LjExN3ptMjA3LjE3Ni0zNC41MjljLTIwLjk3NCAwLTQxLjQ2My00Ljk0LTYwLjI0Ny0xNC4xMzcgMTUuOTk2LTI2LjE3MyAyNS43MTgtNTYuNTk3IDI1LjcxOC04OS40NTEgMC01Mi44NDQtMjQuMzgtOTkuNjMyLTYxLjkwMi0xMzEuMzI3IDI1Ljg4Mi0yNS45OTggNTkuODU3LTQxLjMyIDk2LjQzMS00MS4zMiA3Ni4xNTcgMCAxMzguMTE4IDYxLjk2MSAxMzguMTE4IDEzOC4xMThzLTYxLjk2MSAxMzguMTE2LTEzOC4xMTggMTM4LjExN3oiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgc3R5bGU9ImZpbGw6IzAwMDAwMCI+PC9wYXRoPjwvZz4gPC9zdmc+" />
+			</a>
 		</div>`;
 
-	let sizeTextBlueberry = `
-		<div>
-			<p class="titleTools">Размер</p>
-			<ul>
-				<li id="larger_text-${nameModule}" title="Увеличить текст">
-					<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgNDkxLjg2IDQ5MS44NiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNDkxLjg2IDQ5MS44NjsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIj48Zz48Zz4KCTxnPgoJCTxwYXRoIGQ9Ik00NjUuMTY3LDIxMS42MTRIMjgwLjI0NVYyNi42OTFjMC04LjQyNC0xMS40MzktMjYuNjktMzQuMzE2LTI2LjY5cy0zNC4zMTYsMTguMjY3LTM0LjMxNiwyNi42OXYxODQuOTI0SDI2LjY5ICAgIEMxOC4yNjcsMjExLjYxNCwwLDIyMy4wNTMsMCwyNDUuOTI5czE4LjI2NywzNC4zMTYsMjYuNjksMzQuMzE2aDE4NC45MjR2MTg0LjkyNGMwLDguNDIyLDExLjQzOCwyNi42OSwzNC4zMTYsMjYuNjkgICAgczM0LjMxNi0xOC4yNjgsMzQuMzE2LTI2LjY5VjI4MC4yNDVINDY1LjE3YzguNDIyLDAsMjYuNjktMTEuNDM4LDI2LjY5LTM0LjMxNlM0NzMuNTksMjExLjYxNCw0NjUuMTY3LDIxMS42MTR6IiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBjbGFzcz0iYWN0aXZlLXBhdGgiIHN0eWxlPSJmaWxsOiMwMDAwMDAiPjwvcGF0aD4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KPC9nPjwvZz4gPC9zdmc+" />
-				</li>
-				<li id="reduce_text-${nameModule}" title="Уменьшить текст">
-					<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgNDkxLjg1OCA0OTEuODU4IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA0OTEuODU4IDQ5MS44NTg7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgY2xhc3M9IiI+PGc+PGc+Cgk8Zz4KCQk8cGF0aCBkPSJNNDY1LjE2NywyMTEuNjEzSDI0MC4yMUgyNi42OWMtOC40MjQsMC0yNi42OSwxMS40MzktMjYuNjksMzQuMzE2czE4LjI2NywzNC4zMTYsMjYuNjksMzQuMzE2aDIxMy41MmgyMjQuOTU5ICAgIGM4LjQyMSwwLDI2LjY4OS0xMS40MzksMjYuNjg5LTM0LjMxNlM0NzMuNTksMjExLjYxMyw0NjUuMTY3LDIxMS42MTN6IiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBjbGFzcz0iYWN0aXZlLXBhdGgiIHN0eWxlPSJmaWxsOiMwMDAwMDAiPjwvcGF0aD4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KPC9nPjwvZz4gPC9zdmc+" />
-				</li>
-			</ul>
+	// размер шрифта
+	let fontSizeModule = `
+		<div class="${widgetName}-module">
+			<div class="${widgetName}-module_title">Шрифт</div>
+
+			<div class="${widgetName}-module_list">
+				<div class="${widgetName}_font-size" data-event="larger" title="Увеличить шрифт">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+						<path d="M28 14H18V4a2 2 0 0 0-4 0v10H4a2 2 0 0 0 0 4h10v10a2 2 0 0 0 4 0V18h10a2 2 0 0 0 0-4z"/>
+					</svg>
+				</div>
+
+				<div class="${widgetName}_font-size" data-event="reduce" title="Уменьшить шрифт">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+						<path d="M417.4 224H94.6C77.7 224 64 238.3 64 256s13.7 32 30.6 32h322.8c16.9 0 30.6-14.3 30.6-32s-13.7-32-30.6-32z"/>
+					</svg>
+				</div>
+			</div>
 		</div>`;
 
-	let letterSpaceTextBlueberry = `
-		<div>
-			<p class="titleTools">Интервал</p>
-			<ul>
-				<li id="larger_interval-${nameModule}" title="Увеличить интервал">
-					<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgNDkxLjg2IDQ5MS44NiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNDkxLjg2IDQ5MS44NjsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIj48Zz48Zz4KCTxnPgoJCTxwYXRoIGQ9Ik00NjUuMTY3LDIxMS42MTRIMjgwLjI0NVYyNi42OTFjMC04LjQyNC0xMS40MzktMjYuNjktMzQuMzE2LTI2LjY5cy0zNC4zMTYsMTguMjY3LTM0LjMxNiwyNi42OXYxODQuOTI0SDI2LjY5ICAgIEMxOC4yNjcsMjExLjYxNCwwLDIyMy4wNTMsMCwyNDUuOTI5czE4LjI2NywzNC4zMTYsMjYuNjksMzQuMzE2aDE4NC45MjR2MTg0LjkyNGMwLDguNDIyLDExLjQzOCwyNi42OSwzNC4zMTYsMjYuNjkgICAgczM0LjMxNi0xOC4yNjgsMzQuMzE2LTI2LjY5VjI4MC4yNDVINDY1LjE3YzguNDIyLDAsMjYuNjktMTEuNDM4LDI2LjY5LTM0LjMxNlM0NzMuNTksMjExLjYxNCw0NjUuMTY3LDIxMS42MTR6IiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBjbGFzcz0iYWN0aXZlLXBhdGgiIHN0eWxlPSJmaWxsOiMwMDAwMDAiPjwvcGF0aD4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KPC9nPjwvZz4gPC9zdmc+" />
-				</li>
-				<li id="reduce_interval-${nameModule}" title="Уменьшить интервал">
-					<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgNDkxLjg1OCA0OTEuODU4IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA0OTEuODU4IDQ5MS44NTg7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgY2xhc3M9IiI+PGc+PGc+Cgk8Zz4KCQk8cGF0aCBkPSJNNDY1LjE2NywyMTEuNjEzSDI0MC4yMUgyNi42OWMtOC40MjQsMC0yNi42OSwxMS40MzktMjYuNjksMzQuMzE2czE4LjI2NywzNC4zMTYsMjYuNjksMzQuMzE2aDIxMy41MmgyMjQuOTU5ICAgIGM4LjQyMSwwLDI2LjY4OS0xMS40MzksMjYuNjg5LTM0LjMxNlM0NzMuNTksMjExLjYxMyw0NjUuMTY3LDIxMS42MTN6IiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBjbGFzcz0iYWN0aXZlLXBhdGgiIHN0eWxlPSJmaWxsOiMwMDAwMDAiPjwvcGF0aD4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KPC9nPjwvZz4gPC9zdmc+" />
-				</li>
-			</ul>
+	// интервал
+	let letterSpacingModule = `
+		<div class="${widgetName}-module">
+			<div class="${widgetName}-module_title">Интервал</div>
+
+			<div class="${widgetName}-module_list">
+				<div class="${widgetName}_letter-spacing" data-event="larger" title="Увеличить интервал">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+						<path d="M28 14H18V4a2 2 0 0 0-4 0v10H4a2 2 0 0 0 0 4h10v10a2 2 0 0 0 4 0V18h10a2 2 0 0 0 0-4z"/>
+					</svg>
+				</div>
+
+				<div class="${widgetName}_letter-spacing" data-event="reduce" title="Уменьшить интервал">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+						<path d="M417.4 224H94.6C77.7 224 64 238.3 64 256s13.7 32 30.6 32h322.8c16.9 0 30.6-14.3 30.6-32s-13.7-32-30.6-32z"/>
+					</svg>
+				</div>
+			</div>
+		</div>`;
+
+	// изображения
+	// функционал модуля [1. вкл-выл изображения, 2. Чёрно-белые изображения]
+	let imagesModule = `
+		<div class="${widgetName}-module">
+			<div class="${widgetName}-module_title">Изображения</div>
+
+			<div class="${widgetName}-module_list">
+				<div class="${widgetName}_img" data-event="status" title="Выключить изображения">Вык</div>
+				<div class="${widgetName}_img" data-event="gray" title="Чёрно-белые изображения">Ч/Б</div>
+			</div>
+		</div>`;
+
+	// темы
+	// список тем [1. Бело-чёрная, 2. Чёрно-белая, 3. Сине-желтая]
+	let themesModule = `
+		<div class="${widgetName}-module">
+			<div class="${widgetName}-module_title">Цветовая схема</div>
+
+			<div class="${widgetName}-module_list">
+				<div class="${widgetName}_theme" data-theme="white">Б/Ч</div>
+				<div class="${widgetName}_theme" data-theme="black">Ч/Б</div>
+				<div class="${widgetName}_theme" data-theme="blue">С/Ж</div>
+			</div>
+		</div>`;
+
+	// сброс настроек
+	let resetSettingsModule = `
+		<div class="${widgetName}-reset-settings ${widgetName}-module" title="Сохранить настройки">
+			<div class="${widgetName}-module_btn">Сбросить настройки</div>
+		</div>`;
+
+	// выключить
+	let offModule = `
+		<div class="${widgetName}-btn ${widgetName}-module" title="Включить обычную версию сайта">
+			<div class="${widgetName}-module_btn">Обычная версия</div>
 		</div>`;
 
 
-	let imagesBlueberry = `
-		<div class="imgBlueberry">
-			<p class="titleTools">Изображения</p>
-			<ul>
-				<li id="img-${nameModule}" title="Выключить изображения">Вык</li>
-				<li id="gray_img-${nameModule}" title="Чёрно-белые изображения">Ч/Б</li>
-			</ul>
-		</div>`;
+	///////////////////////// ИНИЦИАЛИЗАЦИЯ ВИДЖЕТА /////////////////////////
 
+	let blueberryWidget = document.createElement('div');
+		blueberryWidget.id = widgetName + '-widget';
+		blueberryWidget.className = widgetName;
 
-	let themeBlueberry = `
-		<div class="themeBlueberry">
-			<p class="titleTools">цветовая Схема</p>
-			<ul>
-				<li id="white_theme-${nameModule}" class="btn_theme-blueberry" title="Белое на чёрном">Б/Ч</li>
-				<li id="black_theme-${nameModule}" class="btn_theme-blueberry" title="Чёрное на белом">Ч/Б</li>
-				<li id="blue_theme-${nameModule}" class="btn_theme-blueberry" title="Чёрное на белом">С/Ж</li>
-			</ul>
-		</div>`;
+		// список модулей, включенных в панель
+		blueberryWidget.innerHTML = [
+			logoModule, 
+			fontSizeModule, 
+			letterSpacingModule, 
+			imagesModule, 
+			themesModule, 
+			resetSettingsModule, 
+			offModule
+		].join('');
 
-	let btnResetSettingsBlueberry = `
-		<div class="resetSettingsBlueberry" title="Сохранить настройки">
-			<p>Сбросить настройки</p>
-		</div>`;
-
-
-	let btnOffBlueberry = `
-		<div class="blueberry-btn" title="Включить обычную версию сайта">
-			<p>Обычная версия</p>
-		</div>`;
-
-
-	// сборка панели и добавление её в DOM
-
-	let blueberry = document.createElement('div');
-		blueberry.id = nameModule;
-		blueberry.innerHTML = [logoBlueberry, sizeTextBlueberry, letterSpaceTextBlueberry, imagesBlueberry, themeBlueberry, btnResetSettingsBlueberry, btnOffBlueberry].join('');
-
-	document.body.prepend(blueberry);
+	document.body.prepend(blueberryWidget);
 
 
 
@@ -124,71 +157,264 @@ document.addEventListener('DOMContentLoaded', function(){
 
 	function moduleStatusBlueberry(typeEvent){
 
-		let moduleStatusCookie = getCookie("moduleStatus-" + nameModule);
+		let moduleStatusCookie = getCookie("moduleStatus-" + widgetName);
 
-		function openBlueberry(){
+		function openBlueberry(cookie = false){
 
-			blueberry.classList.add('active');
-			document.body.classList.add('active-' + nameModule);
+			blueberryWidget.classList.add('active');
+			document.body.classList.add('active-' + widgetName);
 
-			setCookie("moduleStatus-" + nameModule, "active", {});
+			if (cookie) setCookie("moduleStatus-" + widgetName, "active", {});
 		}
 
 		function closeBlueberry(){
 
-			blueberry.classList.remove('active');
+			// УДАЛЕНИЕ КЛАССОВ
+			// статус панели
+			blueberryWidget.classList.remove('active');
 
-			// удаление cookies
-			let cookies = document.cookie.split(';');
-
-			cookies.forEach( function(e) {
-
-				let cookieArr = e.split(/-|=/);
-
-				if(cookieArr[cookieArr.length - 2] == nameModule){
-
-					let nameCookie = cookieArr.splice(0,2).join('-');
-					deleteCookie(nameCookie);
-				}
-			});
-
-			// удаление классов с body
+			// удаление классов которые относятся к blueberry с body 
 			let classesBody = document.body.className.split(' ');
 
 			classesBody.forEach( function(e) {
 				
 				let arrClass = e.split('-');
 
-				if(arrClass[arrClass.length - 1] == nameModule){
+				if(arrClass[arrClass.length - 1] == widgetName){
 					document.body.classList.remove(e);
 				}
-			});		
+			});	
+			
+			// УДАЛЕНИЕ COOKIE
+			let cookies = document.cookie.split(';');
+
+			cookies.forEach( function(e) {
+
+				let cookieArr = e.split(/-|=/);
+
+				if(cookieArr[cookieArr.length - 2] == widgetName){
+
+					let nameCookie = cookieArr.splice(0,2).join('-');
+					deleteCookie(nameCookie);
+				}
+			});
 		}
 
 
 		if(typeEvent == 'load'){
-
-			if(moduleStatusCookie == "active"){
-				document.body.classList.add('active-' + nameModule);
-				blueberry.classList.add('active');
-			}
-
+			if (moduleStatusCookie == "active") openBlueberry();
 		}else if(typeEvent == 'click'){
-			moduleStatusCookie == "active" ? closeBlueberry() : openBlueberry();
+			moduleStatusCookie == "active" ? closeBlueberry() : openBlueberry(true);
 		}
 	}
 
 	// находит все кнопки на странице для открытия и закрытия модуля
-	let btnBlueberryStatus = document.querySelectorAll(".blueberry-btn");
+	let btnsBlueberry = document.querySelectorAll(".blueberry-btn");
 
-	for(var i = 0; i < btnBlueberryStatus.length; i++) {
-		btnBlueberryStatus[i].addEventListener('click', ()=> moduleStatusBlueberry('click'));
+	if(btnsBlueberry){
+		btnsBlueberry.forEach(btn => btn.addEventListener('click', ()=> moduleStatusBlueberry('click')))
 	}
 
 
-///////////////////////// СБРОСИТЬ НАСТРОЙКИ /////////////////////////
+
+
+
+
+///////////////////////// МОДУЛЬ - ИЗОБРАЖЕНИЯ /////////////////////////
+
+	function imgMobuleBlueberry(){
+
+		// вкл-вык изображения
+		function imgOff(typeEvent){
+
+			let className = 'img-off__blueberry',
+				state = getCookie("img-"+ widgetName),
+				btn = blueberryWidget.querySelector(".blueberry_img[data-event='status']")
+
+				
+			// вык
+			function off(addCookie = false){
+				document.body.classList.add(className);
+				btn.textContent = "Вкл";
+
+				if(addCookie) setCookie("img-"+ widgetName, 'off', {});
+			}
 	
-	function resetSettingsBlueberry(){
+			// вкл
+			function on(){
+				document.body.classList.remove(className);
+				btn.textContent = "Вык";
+
+				deleteCookie("img-"+ widgetName);
+			}
+	
+			if(typeEvent == 'load' && state) off()
+			
+			if(typeEvent == 'click'){
+				(state) ? on() : off(true)
+			}
+		}
+
+
+		// чёрно-белые изображения
+		function imgGray(typeEvent){
+
+			let className = 'img-gray__blueberry',
+				state = getCookie("img-gray-"+ widgetName),
+				btn = blueberryWidget.querySelector(".blueberry_img[data-event='gray']")
+
+				
+			function gray(addCookie = false){
+				document.body.classList.add(className);
+				btn.textContent = "ЦВ";
+
+				if(addCookie) setCookie("img-gray-"+ widgetName, 'off', {});
+			}
+	
+			function color(){
+				document.body.classList.remove(className);
+				btn.textContent = "Ч/Б";
+
+				deleteCookie("img-gray-"+ widgetName);
+			}
+	
+			if(typeEvent == 'load' && state) gray()
+			
+			if(typeEvent == 'click'){
+				(state) ? color() : gray(true)
+			}
+		}
+
+		
+		let btns = blueberryWidget.querySelectorAll('.' + widgetName + '_img')
+
+		if(btns){
+
+			btns.forEach(btn => {
+
+				let type = btn.getAttribute('data-event')
+
+				if(type == 'status'){
+					btn.addEventListener('click', () => imgOff('click'))
+				}else if(type == 'gray'){
+					btn.addEventListener('click', () => imgGray('click'))
+				}
+			})
+		}
+
+		// запуск при загрузке страницы
+		if (getCookie("img-"+ widgetName)) imgOff('load')
+		if (getCookie("img-gray-"+ widgetName)) imgGray('load')
+	}
+
+	imgMobuleBlueberry()
+
+	
+
+// ///////////////////////// МОДУЛЬ - ТЕМА /////////////////////////
+
+	function themesMobuleBlueberry(){
+
+		function selectTheme(typeEvent, theme = null){
+
+			//console.log(theme)
+
+			let state = getCookie("theme-"+ widgetName)
+
+			if(theme){
+				theme = theme.getAttribute('data-theme')
+			}else{
+				theme = getCookie("theme-" + widgetName)
+			}
+
+			function clearThemes(){
+				themes.forEach(theme =>{
+					document.body.classList.remove('theme-' + theme + '__' + widgetName);
+				})
+			}
+
+
+			// вкл
+			function on(addCookie = false){
+
+				clearThemes()
+				document.body.classList.add('theme-' + theme + '__' + widgetName);
+
+				if(addCookie){
+					setCookie("theme-" + widgetName, theme, {});
+				}
+			}
+
+			// вык
+			function off(){
+				clearThemes()
+				deleteCookie("theme-" + widgetName);
+			}
+
+
+			if(typeEvent == 'load' && state) on()
+
+			if(typeEvent == 'click'){
+
+				if(state){
+					state == theme ? off() : on(true)
+				}else{
+					on(true)
+				}
+			}
+		}
+
+		
+		let btns = document.querySelectorAll('.blueberry_theme'),
+			themes = []
+
+		if(btns){
+			btns.forEach(btn => {
+				themes.push(btn.getAttribute('data-theme'))
+				btn.addEventListener('click', () => selectTheme('click', btn))
+			})
+		}
+
+		// запуск при загрузке страницы
+		if (getCookie("theme-" + widgetName)) selectTheme('load')
+	}
+
+	themesMobuleBlueberry()
+
+// 	function themesBlueberry(typeEvent, idBtn){
+
+// 		let themeCookie = getCookie("theme-" + widgetName);
+
+// 		if(typeEvent == 'load'){
+
+// 			document.body.classList.add(themeCookie);
+
+// 		}else if(typeEvent == 'click'){
+
+// 			const classesBtn = ["white_theme-blueberry", "black_theme-blueberry", "blue_theme-blueberry"];
+
+// 			document.body.classList.remove(...classesBtn);
+// 			document.body.classList.add(idBtn);
+
+// 			setCookie("theme-" + widgetName, idBtn, {});
+// 		}
+// 	}
+
+
+// 	let btnsThemeBlueberry = document.querySelectorAll('.btn_theme-blueberry');
+
+// 	btnsThemeBlueberry.forEach((e) => {
+// 		e.addEventListener('click', function(){
+// 			themesBlueberry('click', this.id);
+// 		});
+// 	});
+
+
+///////////////////////// МОДУЛЬ - СБРОСИТЬ НАСТРОЙКИ /////////////////////////
+	
+function resetSettingsMobuleBlueberry(){
+
+	function reset(){
 
 		// удаление cookies
 		let cookies = document.cookie.split(';');
@@ -197,7 +423,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 			let cookieArr = e.split(/-|=/);
 
-			if(cookieArr[0].trim() != "moduleStatus" && cookieArr[cookieArr.length - 2] == nameModule){
+			if(cookieArr[0].trim() != "moduleStatus" && cookieArr[cookieArr.length - 2] == widgetName){
 
 				let nameCookie = cookieArr.splice(0,2).join('-');
 				deleteCookie(nameCookie);
@@ -211,139 +437,44 @@ document.addEventListener('DOMContentLoaded', function(){
 
 			let arrClass = e.split('-');
 
-			if(arrClass[0] != "active" && arrClass[1] == nameModule){
+			if(arrClass[0] != "active" && arrClass[1] == widgetName){
 				document.body.classList.remove(e);
 			}
 		});
 	}
 
-	document.querySelector('.resetSettingsBlueberry').addEventListener('click', ()=> resetSettingsBlueberry());
+	let btnResetSettings = blueberryWidget.querySelector(widgetName + '-reset-settings')
 
-
-///////////////////////// ИЗОБРАЖЕНИЯ /////////////////////////
-
-	// включение отключение изображений
-	function imgOnOffBlueberry(typeEvent){
-
-		let imgCookie = getCookie("img-"+ nameModule);
-
-		function disabledImg(){
-			document.body.classList.add('disabledImg-blueberry');
-			setCookie("img-"+ nameModule, "disabled", {});
-
-			document.querySelector('#img-blueberry').textContent = "Вкл";
-		}
-
-		function enebledImg(){
-			document.body.classList.remove('disabledImg-blueberry');
-			deleteCookie("img-"+ nameModule);
-
-			document.querySelector('#img-blueberry').textContent = "Вык";
-		}
-
-		if(typeEvent == 'load'){
-
-			if(imgCookie == "disabled"){
-				document.body.classList.add('disabledImg-blueberry');
-				document.querySelector('#img-blueberry').textContent = "Вкл";
-			}
-
-		}else if(typeEvent == 'click'){
-			imgCookie == "disabled" ? enebledImg(): disabledImg();
-		}
+	if(btnResetSettings){
+		btnResetSettings.addEventListener('click', reset);
 	}
+}
 
-	document.querySelector('#img-blueberry').addEventListener('click', ()=> imgOnOffBlueberry('click'));
-
-
-	// чёно-белые изображения
-	function imgGrayBlueberry(typeEvent){
-		
-		let imgGrayCookie = getCookie("imgGray-" + nameModule);
-
-		function onImgGray(){
-			document.body.classList.add('grayImg-blueberry');
-			document.querySelector('#gray_img-blueberry').textContent = "ЦВ";
-			setCookie("imgGray-" + nameModule, "on", {});
-		}
-
-		function offImgGray(){
-			document.body.classList.remove('grayImg-blueberry');
-			document.querySelector('#gray_img-blueberry').textContent = "Ч/Б";
-			deleteCookie("imgGray-" + nameModule);
-		}
-
-		if(typeEvent == 'load'){
-
-			if(imgGrayCookie == "on"){
-				document.body.classList.add('grayImg-blueberry');
-				document.querySelector('#gray_img-blueberry').textContent = "ЦВ";
-			}
-
-		}else if(typeEvent == 'click'){
-			imgGrayCookie == "on" ? offImgGray(): onImgGray();
-		}
-	}
-
-	document.querySelector('#gray_img-blueberry').addEventListener('click', ()=> imgGrayBlueberry('click'));
-	
-
-///////////////////////// ТЕМЫ /////////////////////////
-
-	function themesBlueberry(typeEvent, idBtn){
-
-		let themeCookie = getCookie("theme-" + nameModule);
-
-		if(typeEvent == 'load'){
-
-			document.body.classList.add(themeCookie);
-
-		}else if(typeEvent == 'click'){
-
-			const classesBtn = ["white_theme-blueberry", "black_theme-blueberry", "blue_theme-blueberry"];
-
-			document.body.classList.remove(...classesBtn);
-			document.body.classList.add(idBtn);
-
-			setCookie("theme-" + nameModule, idBtn, {});
-		}
-	}
-
-
-	let btnsThemeBlueberry = document.querySelectorAll('.btn_theme-blueberry');
-
-	btnsThemeBlueberry.forEach((e) => {
-		e.addEventListener('click', function(){
-			themesBlueberry('click', this.id);
-		});
-	});
-
-
-
+resetSettingsMobuleBlueberry()
 
 
 
 ///////////////////////// ПРИ ЗАГРУЗКЕ СТРАНИЦЫ /////////////////////////
 
 	// состояние панели
-	if(getCookie("moduleStatus-" + nameModule) == 'active'){
+	if(getCookie("moduleStatus-" + widgetName) == 'active'){
 		moduleStatusBlueberry('load');
 	};
 
 	// вкл-выкл изображения
-	if(getCookie('img-' + nameModule)){
-		imgOnOffBlueberry('load');
-	};
+	// if(getCookie('img-' + widgetName)){
+	// 	imgOnOffBlueberry('load');
+	// };
 
-	// чб изображения
-	if(getCookie('imgGray-' + nameModule)){
-		imgGrayBlueberry('load');
-	};
+	// // чб изображения
+	// if(getCookie('imgGray-' + widgetName)){
+	// 	imgGrayBlueberry('load');
+	// };
 
-	// чб изображения
-	if(getCookie('theme-' + nameModule)){
-		themesBlueberry('load');
-	};
+	// // чб изображения
+	// if(getCookie('theme-' + widgetName)){
+	// 	themesBlueberry('load');
+	// };
 
 })
 
