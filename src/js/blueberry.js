@@ -419,12 +419,12 @@ document.addEventListener('DOMContentLoaded', function(){
 
 			// добавление класса в body
 			function addClass(value){
-				document.body.classList.add('font-size__' + value + '__' + widgetName);
+				document.body.classList.add('font-size_' + value + '__' + widgetName);
 			}
 
 			// удаление класса с body
 			function delClass(value){
-				document.body.classList.remove('font-size__' + value + '__' + widgetName);
+				document.body.classList.remove('font-size_' + value + '__' + widgetName);
 			}
 			
 			// увеличить
