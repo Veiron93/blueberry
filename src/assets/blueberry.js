@@ -71,13 +71,21 @@ document.addEventListener('DOMContentLoaded', function () {
 		</div>`; // сброс настроек
 
   let resetSettingsModule = `
-		<div class="${widgetName}-reset-settings ${widgetName}-module" title="Сохранить настройки">
-			<div class="${widgetName}-module_btn">Сбросить настройки</div>
+		<div class="${widgetName}-module">
+			<div 
+				class="${widgetName}-reset-settings ${widgetName}-module_btn"
+				title="Сохранить настройки">
+				Сбросить настройки
+			</div>
 		</div>`; // выключить
 
   let offModule = `
-		<div class="${widgetName}-btn ${widgetName}-module" title="Включить обычную версию сайта">
-			<div class="${widgetName}-module_btn">Обычная версия</div>
+		<div class="${widgetName}-module">
+			<div 
+				class="${widgetName}-btn ${widgetName}-module_btn"
+				title="Включить обычную версию сайта">
+				Обычная версия
+			</div>
 		</div>`; ///////////////////////// ИНИЦИАЛИЗАЦИЯ ВИДЖЕТА /////////////////////////
 
   let blueberryWidget = document.createElement('div');
@@ -128,76 +136,75 @@ document.addEventListener('DOMContentLoaded', function () {
     setCookie(name, null, {
       expires: -1
     });
-  } ///////////////////////// СОСТОЯНИЕ ПАНЕЛИ /////////////////////////
+  } ///////////////////////// СОСТОЯНИЕ ВИДЖЕТА /////////////////////////
 
 
-  function moduleStatusBlueberry(typeEvent) {
-    let moduleStatusCookie = getCookie("moduleStatus-" + widgetName);
-
-    function openBlueberry(cookie = false) {
+  function stateBlueberryWidget() {
+    function open(cookie = false) {
       blueberryWidget.classList.add('active');
-      document.body.classList.add('active-' + widgetName);
-      if (cookie) setCookie("moduleStatus-" + widgetName, "active", {});
+      if (cookie) setCookie(nameCookie, true, {});
     }
 
-    function closeBlueberry() {
+    function close() {
       // УДАЛЕНИЕ КЛАССОВ
-      // статус панели
+      // удаление класса с виджета
       blueberryWidget.classList.remove('active'); // удаление классов которые относятся к blueberry с body 
 
       let classesBody = document.body.className.split(' ');
-      classesBody.forEach(function (e) {
-        let arrClass = e.split('-');
-
-        if (arrClass[arrClass.length - 1] == widgetName) {
-          document.body.classList.remove(e);
-        }
+      classesBody.forEach(e => {
+        if (e.split('__')[1] == widgetName) document.body.classList.remove(e);
       }); // УДАЛЕНИЕ COOKIE
 
       let cookies = document.cookie.split(';');
-      cookies.forEach(function (e) {
-        let cookieArr = e.split(/-|=/);
-
-        if (cookieArr[cookieArr.length - 2] == widgetName) {
-          let nameCookie = cookieArr.splice(0, 2).join('-');
-          deleteCookie(nameCookie);
-        }
+      cookies.forEach(cookie => {
+        cookie = cookie.trim().split('=')[0];
+        if (cookie.split('-')[0] == widgetName) deleteCookie(cookie);
       });
     }
 
-    if (typeEvent == 'load') {
-      if (moduleStatusCookie == "active") openBlueberry();
-    } else if (typeEvent == 'click') {
-      moduleStatusCookie == "active" ? closeBlueberry() : openBlueberry(true);
+    function state(typeEvent) {
+      let stateCookie = getCookie(nameCookie);
+
+      if (typeEvent == 'click') {
+        stateCookie ? close() : open(true);
+      }
+
+      if (typeEvent == 'load') {
+        if (stateCookie) open();
+      }
+    } // находит все кнопки на странице для открытия и закрытия виджета
+
+
+    let btnsBlueberry = document.querySelectorAll(".blueberry-btn"),
+        nameCookie = widgetName + "-state-widget";
+
+    if (btnsBlueberry) {
+      btnsBlueberry.forEach(btn => btn.addEventListener('click', () => state('click')));
     }
-  } // находит все кнопки на странице для открытия и закрытия модуля
 
+    if (getCookie(nameCookie)) state('load');
+  }
 
-  let btnsBlueberry = document.querySelectorAll(".blueberry-btn");
-
-  if (btnsBlueberry) {
-    btnsBlueberry.forEach(btn => btn.addEventListener('click', () => moduleStatusBlueberry('click')));
-  } ///////////////////////// МОДУЛЬ - ИЗОБРАЖЕНИЯ /////////////////////////
-
+  stateBlueberryWidget(); ///////////////////////// МОДУЛЬ - ИЗОБРАЖЕНИЯ /////////////////////////
 
   function imgMobuleBlueberry() {
     // вкл-вык изображения
     function imgOff(typeEvent) {
       let className = 'img-off__blueberry',
-          state = getCookie("img-" + widgetName),
+          state = getCookie(nameCookieImg),
           btn = blueberryWidget.querySelector(".blueberry_img[data-event='status']"); // вык
 
       function off(addCookie = false) {
         document.body.classList.add(className);
         btn.textContent = "Вкл";
-        if (addCookie) setCookie("img-" + widgetName, 'off', {});
+        if (addCookie) setCookie(nameCookieImg, 'off', {});
       } // вкл
 
 
       function on() {
         document.body.classList.remove(className);
         btn.textContent = "Вык";
-        deleteCookie("img-" + widgetName);
+        deleteCookie(nameCookieImg);
       }
 
       if (typeEvent == 'load' && state) off();
@@ -210,19 +217,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function imgGray(typeEvent) {
       let className = 'img-gray__blueberry',
-          state = getCookie("img-gray-" + widgetName),
+          state = getCookie(nameCookieImgGray),
           btn = blueberryWidget.querySelector(".blueberry_img[data-event='gray']");
 
       function gray(addCookie = false) {
         document.body.classList.add(className);
         btn.textContent = "ЦВ";
-        if (addCookie) setCookie("img-gray-" + widgetName, 'off', {});
+        if (addCookie) setCookie(nameCookieImgGray, 'off', {});
       }
 
       function color() {
         document.body.classList.remove(className);
         btn.textContent = "Ч/Б";
-        deleteCookie("img-gray-" + widgetName);
+        deleteCookie(nameCookieImgGray);
       }
 
       if (typeEvent == 'load' && state) gray();
@@ -232,7 +239,9 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
 
-    let btns = blueberryWidget.querySelectorAll('.' + widgetName + '_img');
+    let btns = blueberryWidget.querySelectorAll('.' + widgetName + '_img'),
+        nameCookieImg = widgetName + "-img",
+        nameCookieImgGray = widgetName + "-img-gray";
 
     if (btns) {
       btns.forEach(btn => {
@@ -247,22 +256,16 @@ document.addEventListener('DOMContentLoaded', function () {
     } // запуск при загрузке страницы
 
 
-    if (getCookie("img-" + widgetName)) imgOff('load');
-    if (getCookie("img-gray-" + widgetName)) imgGray('load');
+    if (getCookie(nameCookieImg)) imgOff('load');
+    if (getCookie(nameCookieImgGray)) imgGray('load');
   }
 
   imgMobuleBlueberry(); // ///////////////////////// МОДУЛЬ - ТЕМА /////////////////////////
 
   function themesMobuleBlueberry() {
     function selectTheme(typeEvent, theme = null) {
-      //console.log(theme)
-      let state = getCookie("theme-" + widgetName);
-
-      if (theme) {
-        theme = theme.getAttribute('data-theme');
-      } else {
-        theme = getCookie("theme-" + widgetName);
-      }
+      if (!theme) theme = getCookie(nameCookie);
+      let state = getCookie(nameCookie); // удаление классов с body
 
       function clearThemes() {
         themes.forEach(theme => {
@@ -274,16 +277,13 @@ document.addEventListener('DOMContentLoaded', function () {
       function on(addCookie = false) {
         clearThemes();
         document.body.classList.add('theme-' + theme + '__' + widgetName);
-
-        if (addCookie) {
-          setCookie("theme-" + widgetName, theme, {});
-        }
+        if (addCookie) setCookie(nameCookie, theme, {});
       } // вык
 
 
       function off() {
         clearThemes();
-        deleteCookie("theme-" + widgetName);
+        deleteCookie(nameCookie);
       }
 
       if (typeEvent == 'load' && state) on();
@@ -297,86 +297,106 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
 
-    let btns = document.querySelectorAll('.blueberry_theme'),
+    let btns = blueberryWidget.querySelectorAll('.' + widgetName + '_theme'),
+        nameCookie = widgetName + "-theme",
         themes = [];
 
     if (btns) {
       btns.forEach(btn => {
-        themes.push(btn.getAttribute('data-theme'));
-        btn.addEventListener('click', () => selectTheme('click', btn));
+        let theme = btn.getAttribute('data-theme');
+        themes.push(theme);
+        btn.addEventListener('click', () => selectTheme('click', theme));
       });
     } // запуск при загрузке страницы
 
 
-    if (getCookie("theme-" + widgetName)) selectTheme('load');
+    if (getCookie(nameCookie)) selectTheme('load');
   }
 
-  themesMobuleBlueberry(); // 	function themesBlueberry(typeEvent, idBtn){
-  // 		let themeCookie = getCookie("theme-" + widgetName);
-  // 		if(typeEvent == 'load'){
-  // 			document.body.classList.add(themeCookie);
-  // 		}else if(typeEvent == 'click'){
-  // 			const classesBtn = ["white_theme-blueberry", "black_theme-blueberry", "blue_theme-blueberry"];
-  // 			document.body.classList.remove(...classesBtn);
-  // 			document.body.classList.add(idBtn);
-  // 			setCookie("theme-" + widgetName, idBtn, {});
-  // 		}
-  // 	}
-  // 	let btnsThemeBlueberry = document.querySelectorAll('.btn_theme-blueberry');
-  // 	btnsThemeBlueberry.forEach((e) => {
-  // 		e.addEventListener('click', function(){
-  // 			themesBlueberry('click', this.id);
-  // 		});
-  // 	});
-  ///////////////////////// МОДУЛЬ - СБРОСИТЬ НАСТРОЙКИ /////////////////////////
+  themesMobuleBlueberry(); ///////////////////////// МОДУЛЬ - СБРОСИТЬ НАСТРОЙКИ /////////////////////////
 
   function resetSettingsMobuleBlueberry() {
     function reset() {
-      // удаление cookies
+      // УДАЛЕНИЕ COOKIE
       let cookies = document.cookie.split(';');
-      cookies.forEach(function (e) {
-        let cookieArr = e.split(/-|=/);
-
-        if (cookieArr[0].trim() != "moduleStatus" && cookieArr[cookieArr.length - 2] == widgetName) {
-          let nameCookie = cookieArr.splice(0, 2).join('-');
-          deleteCookie(nameCookie);
-        }
-      }); // удаление классов с body
+      cookies.forEach(cookie => {
+        cookie = cookie.trim().split('=')[0];
+        if (cookie != widgetName + "-state-widget" && cookie.split('-')[0] == widgetName) deleteCookie(cookie);
+      }); // УДАЛЕНИЕ КЛАССОВ
 
       let classesBody = document.body.className.split(' ');
-      classesBody.forEach(function (e) {
-        let arrClass = e.split('-');
-
-        if (arrClass[0] != "active" && arrClass[1] == widgetName) {
-          document.body.classList.remove(e);
-        }
+      classesBody.forEach(e => {
+        if (e.split('__')[1] == widgetName) document.body.classList.remove(e);
       });
     }
 
-    let btnResetSettings = blueberryWidget.querySelector(widgetName + '-reset-settings');
+    let btnResetSettings = blueberryWidget.querySelector('.' + widgetName + '-reset-settings');
+    if (btnResetSettings) btnResetSettings.addEventListener('click', reset);
+  }
 
-    if (btnResetSettings) {
-      btnResetSettings.addEventListener('click', reset);
+  resetSettingsMobuleBlueberry(); ///////////////////////// МОДУЛЬ - РАЗМЕР ШРИФТА /////////////////////////
+
+  function fontSizeMobuleBlueberry() {
+    function size(start, typeEvent) {
+      // добавление класса в body
+      function addClass(value) {
+        document.body.classList.add('font-size__' + value + '__' + widgetName);
+      } // удаление класса с body
+
+
+      function delClass(value) {
+        document.body.classList.remove('font-size__' + value + '__' + widgetName);
+      } // увеличить
+
+
+      function larger() {
+        if (!fontSizeValue) fontSizeValue = 0;
+        if (fontSizeValue < 5) delClass(fontSizeValue);
+        fontSizeValue++;
+
+        if (fontSizeValue <= 5) {
+          addClass(fontSizeValue);
+          setCookie(cookieName, fontSizeValue, {});
+        }
+      } // уменьшить
+
+
+      function reduce() {
+        delClass(fontSizeValue);
+        fontSizeValue--;
+
+        if (fontSizeValue > 0) {
+          addClass(fontSizeValue);
+          setCookie(cookieName, fontSizeValue, {});
+        } else {
+          deleteCookie(cookieName);
+        }
+      }
+
+      let fontSizeValue = Number(getCookie(cookieName));
+
+      if (start == 'click') {
+        // +
+        if (typeEvent == 'larger') larger(); // -
+
+        if (typeEvent == 'reduce' && fontSizeValue) reduce();
+      }
+
+      if (start == 'load' && fontSizeValue) addClass(fontSizeValue);
+    }
+
+    let btns = blueberryWidget.querySelectorAll('.' + widgetName + '_font-size'),
+        cookieName = widgetName + "-font-size";
+
+    if (btns) {
+      // click
+      btns.forEach(btn => {
+        btn.addEventListener('click', () => size('click', btn.getAttribute('data-event')));
+      }); // load
+
+      if (getCookie(cookieName)) size('load');
     }
   }
 
-  resetSettingsMobuleBlueberry(); ///////////////////////// ПРИ ЗАГРУЗКЕ СТРАНИЦЫ /////////////////////////
-  // состояние панели
-
-  if (getCookie("moduleStatus-" + widgetName) == 'active') {
-    moduleStatusBlueberry('load');
-  }
-
-  ; // вкл-выкл изображения
-  // if(getCookie('img-' + widgetName)){
-  // 	imgOnOffBlueberry('load');
-  // };
-  // // чб изображения
-  // if(getCookie('imgGray-' + widgetName)){
-  // 	imgGrayBlueberry('load');
-  // };
-  // // чб изображения
-  // if(getCookie('theme-' + widgetName)){
-  // 	themesBlueberry('load');
-  // };
+  fontSizeMobuleBlueberry();
 });
