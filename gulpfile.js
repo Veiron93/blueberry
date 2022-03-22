@@ -9,6 +9,7 @@ var gulp = require('gulp'),
 	rename  = require('gulp-rename'),
 	concat = require('gulp-concat'),
 	plumber = require('gulp-plumber'),
+	uglify = require('gulp-uglify'),
 	notify = require("gulp-notify");
 
 
@@ -31,7 +32,7 @@ function reload(done) {
 /////////////// DEVELOPED ///////////////
 
 gulp.task('sass', function(){
-	return gulp.src(['src/sass/**/**/**/*.sass'])
+	return gulp.src(['src/sass/**/**/**/*.scss'])
 	.pipe(plumber({errorHandler: notify.onError("ERROR: <%= error.message %>")}))
 	.pipe(sass())
 	.pipe(rename({dirname: ''}))
@@ -44,11 +45,12 @@ gulp.task('sass', function(){
 gulp.task("js", function () {
   return gulp.src(['src/js/**/*.js'])
     .pipe(babel())
+	.pipe(uglify())
     .pipe(gulp.dest("src/assets"));
 });
 
 gulp.task("watchFiles", function () {
-	gulp.watch('src/sass/**/*.sass', gulp.series('sass'));
+	gulp.watch('src/sass/**/*.scss', gulp.series('sass'));
 	gulp.watch('src/js/**/*.js', gulp.series('js'));
 	gulp.watch('src/**/**/*.+(html|js)', gulp.series(reload));
 });

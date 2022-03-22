@@ -1,7 +1,206 @@
-body {
-  margin: 0;
-  padding: 0;
-  background: #f7f7f7;
+.img-off__blueberry img:not(.skip-blueberry) {
+  opacity: 0 !important;
+}
+.img-off__blueberry div {
+  background-image: none !important;
+}
+
+.img-gray__blueberry img {
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
+}
+
+.theme-white__blueberry {
+  background: #fff;
+  color: #000;
+}
+.theme-white__blueberry * {
+  color: #000 !important;
+}
+.theme-white__blueberry a {
+  text-decoration: none;
+  border-bottom: 1px dashed #000;
+}
+.theme-white__blueberry a:hover {
+  color: #e75f0f !important;
+}
+.theme-white__blueberry form input, .theme-white__blueberry form textarea, .theme-white__blueberry form select, .theme-white__blueberry form button {
+  color: #000;
+  font-size: 16px;
+  border: 2px solid #000;
+  background: #fff;
+}
+.theme-white__blueberry form input::-webkit-input-placeholder, .theme-white__blueberry form textarea::-webkit-input-placeholder, .theme-white__blueberry form select::-webkit-input-placeholder, .theme-white__blueberry form button::-webkit-input-placeholder {
+  color: #000;
+}
+.theme-white__blueberry form input::-moz-placeholder, .theme-white__blueberry form textarea::-moz-placeholder, .theme-white__blueberry form select::-moz-placeholder, .theme-white__blueberry form button::-moz-placeholder {
+  color: #000;
+}
+.theme-white__blueberry form input:-ms-input-placeholder, .theme-white__blueberry form textarea:-ms-input-placeholder, .theme-white__blueberry form select:-ms-input-placeholder, .theme-white__blueberry form button:-ms-input-placeholder {
+  color: #000;
+}
+.theme-white__blueberry form input::-ms-input-placeholder, .theme-white__blueberry form textarea::-ms-input-placeholder, .theme-white__blueberry form select::-ms-input-placeholder, .theme-white__blueberry form button::-ms-input-placeholder {
+  color: #000;
+}
+.theme-white__blueberry form input::placeholder, .theme-white__blueberry form textarea::placeholder, .theme-white__blueberry form select::placeholder, .theme-white__blueberry form button::placeholder {
+  color: #000;
+}
+.theme-white__blueberry form input:hover, .theme-white__blueberry form input:focus, .theme-white__blueberry form textarea:hover, .theme-white__blueberry form textarea:focus, .theme-white__blueberry form select:hover, .theme-white__blueberry form select:focus, .theme-white__blueberry form button:hover, .theme-white__blueberry form button:focus {
+  border-color: #e75f0f;
+}
+.theme-white__blueberry form button, .theme-white__blueberry form input[type=submit] {
+  background: #000;
+  color: #fff;
+}
+.theme-white__blueberry form button:hover, .theme-white__blueberry form input[type=submit]:hover {
+  background: #fff;
+  color: #000;
+}
+
+.theme-black__blueberry {
+  background: #000;
+  color: #fff;
+}
+.theme-black__blueberry * {
+  color: #fff !important;
+}
+.theme-black__blueberry a {
+  text-decoration: none;
+  border-bottom: 1px dashed #fff;
+}
+.theme-black__blueberry a:hover {
+  color: #e75f0f !important;
+}
+.theme-black__blueberry form input, .theme-black__blueberry form textarea, .theme-black__blueberry form select, .theme-black__blueberry form button {
+  color: #000 !important;
+  border: 2px solid #fff;
+  font-size: 16px;
+  background: #fff;
+}
+.theme-black__blueberry form input::-webkit-input-placeholder, .theme-black__blueberry form textarea::-webkit-input-placeholder, .theme-black__blueberry form select::-webkit-input-placeholder, .theme-black__blueberry form button::-webkit-input-placeholder {
+  color: #000;
+}
+.theme-black__blueberry form input::-moz-placeholder, .theme-black__blueberry form textarea::-moz-placeholder, .theme-black__blueberry form select::-moz-placeholder, .theme-black__blueberry form button::-moz-placeholder {
+  color: #000;
+}
+.theme-black__blueberry form input:-ms-input-placeholder, .theme-black__blueberry form textarea:-ms-input-placeholder, .theme-black__blueberry form select:-ms-input-placeholder, .theme-black__blueberry form button:-ms-input-placeholder {
+  color: #000;
+}
+.theme-black__blueberry form input::-ms-input-placeholder, .theme-black__blueberry form textarea::-ms-input-placeholder, .theme-black__blueberry form select::-ms-input-placeholder, .theme-black__blueberry form button::-ms-input-placeholder {
+  color: #000;
+}
+.theme-black__blueberry form input::placeholder, .theme-black__blueberry form textarea::placeholder, .theme-black__blueberry form select::placeholder, .theme-black__blueberry form button::placeholder {
+  color: #000;
+}
+.theme-black__blueberry form input:hover, .theme-black__blueberry form input:focus, .theme-black__blueberry form textarea:hover, .theme-black__blueberry form textarea:focus, .theme-black__blueberry form select:hover, .theme-black__blueberry form select:focus, .theme-black__blueberry form button:hover, .theme-black__blueberry form button:focus {
+  border-color: #e75f0f;
+}
+.theme-black__blueberry form select option {
+  color: #000 !important;
+}
+.theme-black__blueberry form button, .theme-black__blueberry form input[type=submit] {
+  background: #fff;
+  color: #000;
+}
+.theme-black__blueberry form button:hover, .theme-black__blueberry form input[type=submit]:hover {
+  background: #000;
+  color: #fff !important;
+}
+
+.theme-blue__blueberry {
+  background: #022676;
+  color: #e9e200;
+}
+.theme-blue__blueberry * {
+  color: #e9e200 !important;
+}
+.theme-blue__blueberry a {
+  text-decoration: none;
+  border-bottom: 1px dashed #e9e200;
+}
+.theme-blue__blueberry a:hover {
+  color: #e75f0f !important;
+}
+.theme-blue__blueberry form input, .theme-blue__blueberry form textarea, .theme-blue__blueberry form select, .theme-blue__blueberry form button {
+  color: #022676 !important;
+  border: 2px solid #fff;
+  font-size: 16px;
+}
+.theme-blue__blueberry form input::-webkit-input-placeholder, .theme-blue__blueberry form textarea::-webkit-input-placeholder, .theme-blue__blueberry form select::-webkit-input-placeholder, .theme-blue__blueberry form button::-webkit-input-placeholder {
+  color: #022676;
+}
+.theme-blue__blueberry form input::-moz-placeholder, .theme-blue__blueberry form textarea::-moz-placeholder, .theme-blue__blueberry form select::-moz-placeholder, .theme-blue__blueberry form button::-moz-placeholder {
+  color: #022676;
+}
+.theme-blue__blueberry form input:-ms-input-placeholder, .theme-blue__blueberry form textarea:-ms-input-placeholder, .theme-blue__blueberry form select:-ms-input-placeholder, .theme-blue__blueberry form button:-ms-input-placeholder {
+  color: #022676;
+}
+.theme-blue__blueberry form input::-ms-input-placeholder, .theme-blue__blueberry form textarea::-ms-input-placeholder, .theme-blue__blueberry form select::-ms-input-placeholder, .theme-blue__blueberry form button::-ms-input-placeholder {
+  color: #022676;
+}
+.theme-blue__blueberry form input::placeholder, .theme-blue__blueberry form textarea::placeholder, .theme-blue__blueberry form select::placeholder, .theme-blue__blueberry form button::placeholder {
+  color: #022676;
+}
+.theme-blue__blueberry form input:hover, .theme-blue__blueberry form input:focus, .theme-blue__blueberry form textarea:hover, .theme-blue__blueberry form textarea:focus, .theme-blue__blueberry form select:hover, .theme-blue__blueberry form select:focus, .theme-blue__blueberry form button:hover, .theme-blue__blueberry form button:focus {
+  border-color: #e75f0f;
+}
+.theme-blue__blueberry form select option {
+  color: #022676 !important;
+}
+.theme-blue__blueberry form button, .theme-blue__blueberry form input[type=submit] {
+  background: #fff;
+  color: #022676;
+}
+.theme-blue__blueberry form button:hover, .theme-blue__blueberry form input[type=submit]:hover {
+  background: #e75f0f;
+  color: #fff;
+}
+
+.font-size_1__blueberry *:not(.skip_font-size):not(#blueberry-widget *) {
+  font-size: 20px !important;
+}
+
+.font-size_2__blueberry *:not(.skip_font-size):not(#blueberry-widget *) {
+  font-size: 23px !important;
+}
+
+.font-size_3__blueberry *:not(.skip_font-size):not(#blueberry-widget *) {
+  font-size: 26px !important;
+}
+
+.font-size_4__blueberry *:not(.skip_font-size):not(#blueberry-widget *) {
+  font-size: 29px !important;
+}
+
+.font-size_5__blueberry *:not(.skip_font-size):not(#blueberry-widget *) {
+  font-size: 32px !important;
+}
+
+.letter-spacing_1__blueberry *:not(.skip_letter-spacing):not(#blueberry-widget *) {
+  letter-spacing: 0.5px !important;
+}
+
+.letter-spacing_2__blueberry *:not(.skip_letter-spacing):not(#blueberry-widget *) {
+  letter-spacing: 1px !important;
+}
+
+.letter-spacing_3__blueberry *:not(.skip_letter-spacing):not(#blueberry-widget *) {
+  letter-spacing: 1.5px !important;
+}
+
+.letter-spacing_4__blueberry *:not(.skip_letter-spacing):not(#blueberry-widget *) {
+  letter-spacing: 2px !important;
+}
+
+.letter-spacing_5__blueberry *:not(.skip_letter-spacing):not(#blueberry-widget *) {
+  letter-spacing: 2.5px !important;
+}
+
+.active__bluebbery * {
+  letter-spacing: normal;
+}
+.active__bluebbery .blueberry {
+  display: flex;
 }
 
 .blueberry {
@@ -11,16 +210,16 @@ body {
   flex-wrap: wrap;
   -moz-column-gap: 30px;
        column-gap: 30px;
-  font-family: sans-serif;
-  border-bottom: 2px solid;
+  max-width: 1000px;
+  margin: 10px auto;
+  border: 2px solid #000;
   padding: 0 10px;
   background: #fff;
+  border-radius: 6px;
 }
 .blueberry * {
   box-sizing: border-box;
-}
-.blueberry.active {
-  display: flex;
+  font-family: sans-serif !important;
 }
 .blueberry-module {
   display: flex;
@@ -31,17 +230,17 @@ body {
   width: 100%;
   padding: 8px 10px;
   margin-bottom: 10px;
+  background: #000;
   border-radius: 0 0 6px 6px;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
   text-align: center;
-  color: #fff;
-  background: #000;
+  color: #fff !important;
+  text-transform: uppercase;
+  letter-spacing: 1px !important;
+  font-size: 14px !important;
 }
 .blueberry-module_list {
   display: flex;
@@ -64,101 +263,55 @@ body {
           user-select: none;
   border-radius: 6px 6px 0 0;
   transition: background 0.2s, color 0.2s;
+  font-size: 16px !important;
+  letter-spacing: 0.5px !important;
   font-weight: bold;
+  color: #000 !important;
 }
 .blueberry-module_list > div:hover {
   background: #000;
-  color: #fff;
+  color: #fff !important;
 }
 .blueberry-module_list > div:hover svg {
   fill: #fff;
 }
 .blueberry-module_list > div svg {
-  width: 16px;
+  width: 21px;
   transition: fill 0.2s;
 }
 .blueberry-module_btn {
-  height: 40px;
-  width: 100px;
-  text-align: center;
-  border: 2px solid;
-  border-radius: 6px;
-  font-size: 14px;
+  height: 46px;
+  width: 110px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: bold;
+  border-radius: 6px;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
   transition: background 0.2s, color 0.2s, border-color 0.2s;
   cursor: pointer;
+  text-align: center;
+  border: 2px solid #000;
+  color: #000 !important;
+  font-weight: bold;
+  font-size: 16px !important;
+  letter-spacing: 0.5px !important;
 }
 .blueberry-module_btn:hover {
   background: #000;
   border-color: #000;
-  color: #fff;
+  color: #fff !important;
 }
 .blueberry-logo {
   margin-right: 20px;
 }
+.blueberry-logo a {
+  border: none;
+}
 .blueberry-logo a img {
   display: block;
   height: 30px;
-}
-
-.img-off__blueberry img:not(.skip-blueberry) {
-  opacity: 0;
-}
-.img-off__blueberry div {
-  background-image: none !important;
-}
-
-.img-gray__blueberry img {
-  -webkit-filter: grayscale(100%);
-          filter: grayscale(100%);
-}
-
-.theme-white__blueberry {
-  background: #fff;
-}
-
-.theme-black__blueberry {
-  background: #000;
-  color: #fff;
-}
-.theme-black__blueberry * {
-  color: #fff;
-}
-.theme-black__blueberry a {
-  text-decoration: none;
-  border-bottom: 1px dashed #fff;
-}
-.theme-black__blueberry a:hover {
-  color: yellow;
-}
-
-.theme-blue__blueberry {
-  background: blue;
-}
-
-.font-size_1__blueberry * {
-  font-size: 20px;
-}
-
-.font-size_2__blueberry * {
-  font-size: 23px;
-}
-
-.font-size_3__blueberry * {
-  font-size: 26px;
-}
-
-.font-size_4__blueberry * {
-  font-size: 29px;
-}
-
-.font-size_5__blueberry * {
-  font-size: 32px;
+  background: none;
 }

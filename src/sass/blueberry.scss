@@ -1,0 +1,396 @@
+////////////////////// ИЗОБРАЖЕНИЯ //////////////////////
+
+// отключить изображения
+.img-off__blueberry{
+	img{
+		&:not(.skip-blueberry){
+			opacity: 0 !important;
+		}
+	}
+
+	div{
+		background-image: none !important;
+	}	
+}
+
+// чёрно-белые изображения
+.img-gray__blueberry{
+	img{
+		filter: grayscale(100%);
+	}
+}
+
+
+////////////////////// ТЕМЫ //////////////////////
+
+$black: #000;
+$white: #fff;
+$blue: #022676;
+$yellow: #e9e200;
+$orange: #e75f0f;
+
+// белая
+.theme-white__blueberry{
+	background: $white;
+	color: $black;
+
+	*{
+		color: $black !important;
+	}
+
+	a{
+		text-decoration: none;
+		border-bottom: 1px dashed $black;
+
+		&:hover{
+			color: $orange !important;
+		}
+	}
+
+	form{
+		input, textarea, select, button{
+			color: $black;
+			font-size: 16px;
+			border: 2px solid $black;
+			background: $white;
+	
+			&::placeholder{
+				color: $black;
+			}
+
+			&:hover,
+			&:focus {
+				border-color: $orange;
+			}
+		}
+	
+		button, input[type=submit]{
+			background: $black;
+			color: $white;
+	
+			&:hover{
+				background: $white;
+				color: $black;
+			}
+		}
+	}
+}	
+	
+
+// чёрная
+.theme-black__blueberry{
+	background: $black;
+	color: $white;
+
+	*{
+		color: $white !important;
+	}
+
+	a{
+		text-decoration: none;
+		border-bottom: 1px dashed $white;
+
+		&:hover{
+			color: $orange !important;
+		}
+	}	
+
+	form{
+		input, textarea, select, button{
+			color: $black !important;
+			border: 2px solid $white;
+			font-size: 16px;
+			background: $white;
+	
+			&::placeholder{
+				color: $black;
+			}
+
+			&:hover,
+			&:focus {
+				border-color: $orange;
+			}
+		}
+
+		select{
+			option{
+				color: $black !important;
+			}
+		}
+		
+		button, input[type=submit]{
+			background: $white;
+			color: $black;
+	
+			&:hover{
+				background: $black;
+				color: $white !important;
+			}
+		}
+	}
+}
+
+
+// синяя
+.theme-blue__blueberry{
+	background: $blue;
+	color: $yellow;
+
+	*{
+		color: $yellow !important;
+	}
+
+	a{
+		text-decoration: none;
+		border-bottom: 1px dashed $yellow;
+
+		&:hover{
+			color: $orange !important;
+		}
+	}
+
+	form{
+		input, textarea, select, button{
+			color: $blue !important;
+			border: 2px solid $white;
+			font-size: 16px;
+	
+			&::placeholder{
+				color: $blue;
+			}
+
+			&:hover,
+			&:focus {
+				border-color: $orange;
+			}
+		}
+
+		select{
+			option{
+				color: $blue !important;
+			}
+		}
+	
+		button, input[type=submit]{
+			background: $white;
+			color: $blue;
+	
+			&:hover{
+				background: $orange;
+				color: $white;
+			}
+		}
+	}
+}
+
+
+////////////////////// РАЗМЕР ШРИФТА //////////////////////
+
+.font-size_1__blueberry *:not(.skip_font-size):not(#blueberry-widget *){
+	font-size: 20px !important;
+}
+
+.font-size_2__blueberry *:not(.skip_font-size):not(#blueberry-widget *){
+	font-size: 23px !important;
+}
+
+.font-size_3__blueberry *:not(.skip_font-size):not(#blueberry-widget *){
+	font-size: 26px !important;
+}
+
+.font-size_4__blueberry *:not(.skip_font-size):not(#blueberry-widget *){
+	font-size: 29px !important;
+}
+
+.font-size_5__blueberry *:not(.skip_font-size):not(#blueberry-widget *){
+	font-size: 32px !important;
+}
+
+
+////////////////////// МЕЖБУКВЕННЫЙ ИНТЕРВАЛ //////////////////////
+
+.letter-spacing_1__blueberry *:not(.skip_letter-spacing):not(#blueberry-widget *){
+	letter-spacing: .5px !important;
+}
+
+.letter-spacing_2__blueberry *:not(.skip_letter-spacing):not(#blueberry-widget *){
+	letter-spacing: 1px !important;
+}
+
+.letter-spacing_3__blueberry *:not(.skip_letter-spacing):not(#blueberry-widget *){
+	letter-spacing: 1.5px !important;
+}
+
+.letter-spacing_4__blueberry *:not(.skip_letter-spacing):not(#blueberry-widget *){
+	letter-spacing: 2px !important;
+}
+
+.letter-spacing_5__blueberry *:not(.skip_letter-spacing):not(#blueberry-widget *){
+	letter-spacing: 2.5px !important;
+}
+
+
+
+
+///////////// тестовый сайт
+
+// header
+// 	border: 1px solid red
+
+// 	.header-wrapper
+// 		display: flex
+// 		align-items: center
+// 		padding: 0px 15px
+// 		max-width: 1100px
+// 		width: 100%
+// 		margin: 0 auto
+
+// 		.logo
+// 			a
+// 				img
+// 					height: 40px
+
+// .container
+// 	max-width: 1100px
+// 	width: 100%
+// 	padding: 0px 15px
+
+
+
+// BLUEBERRY
+
+$brs: 6px;
+
+.active__bluebbery{
+	*{
+		letter-spacing: normal;
+	}
+
+	.blueberry{
+		display: flex;
+	}
+}
+
+.blueberry{
+	display: none;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	column-gap: 30px;
+
+	max-width: 1000px;
+	margin: 10px auto;
+
+	border: 2px solid #000;
+	padding: 0 10px;
+	background: #fff;
+	border-radius: $brs;
+	
+	*{
+		box-sizing: border-box;
+		font-family: sans-serif !important;
+	}
+
+	&-module{
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+
+		&_title{
+			width: 100%;
+			padding: 8px 10px;
+			margin-bottom: 10px;
+			
+			background: #000;
+			border-radius: 0 0 $brs $brs;
+			user-select: none;
+			text-align: center;
+
+			color: #fff !important;
+			text-transform: uppercase;
+			letter-spacing: 1px !important;
+			font-size: 14px !important;
+		}
+			
+		&_list{
+			display: flex;
+			column-gap: 8px;
+
+			> div{
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				flex: none;
+
+				width: 46px;
+				height: 30px;
+
+				border: 2px solid #000;
+				border-bottom: none;
+				cursor: pointer;
+				user-select: none;
+				border-radius: $brs $brs 0 0;
+				transition: background .2s, color .2s;
+				
+				font-size: 16px !important;
+				letter-spacing: .5px !important;
+				font-weight: bold;
+				color: #000 !important;
+
+				&:hover{
+					background: #000;
+					color: #fff !important;
+
+					svg{
+						fill: #fff;
+					}	
+				}	
+
+				svg{
+					width: 21px;
+					transition: fill .2s;
+				}	
+			}	
+		}
+			
+		&_btn{
+			height: 46px;
+			width: 110px;
+			
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			
+			border-radius: $brs;
+			user-select: none;
+			transition: background .2s, color .2s, border-color .2s;
+			cursor: pointer;
+			text-align: center;
+			border: 2px solid #000;
+
+			color: #000 !important;
+			font-weight: bold;
+			font-size: 16px !important;
+			letter-spacing: .5px !important;
+
+			&:hover{
+				background: #000;
+				border-color: #000;
+				color: #fff !important;
+			}	
+		}	
+	}					
+				
+	// модуль логотип
+	&-logo{
+		margin-right: 20px;
+		a{
+			border: none;
+			img{
+				display: block;
+				height: 30px;
+				background: none;
+			}	
+		}	
+	}
+}
